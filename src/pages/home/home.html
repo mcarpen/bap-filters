@@ -1,13 +1,14 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Système de recherche
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item *ngFor="let item of modifiedData">
-    {{ item.name }}
+<ion-content>
+  <ion-searchbar (ionInput)="getRestaurants($event)" placeholder="Rechercher un restaurant"></ion-searchbar>
+  <ion-item *ngFor="let restaurant of restaurants">
+    {{ restaurant.name }}
   </ion-item>
 </ion-content>

@@ -7,12 +7,14 @@ import {NavController} from 'ionic-angular';
 })
 export class HomePage {
 
-    originalData: any;
-    modifiedData: any;
+    restaurants: any;
 
     constructor(public navCtrl: NavController) {
+        this.initializeRestaurants();
+    }
 
-        this.originalData = [
+    initializeRestaurants() {
+        this.restaurants = [
             {
                 "name": "Thaun Kroûn",
                 "type": "thailandaise"
@@ -62,7 +64,20 @@ export class HomePage {
                 "type": "italienne"
             }
         ];
+    }
 
-        this.modifiedData = JSON.parse(JSON.stringify(this.originalData));
+    getRestaurants(ev: any) {
+        // Reset items back to all of the items
+        this.initializeRestaurants();
+
+        // set val to the value of the searchbar
+        let val = ev.target.value;
+
+        // if the value is an empty string don't filter the items
+        if (val && val.trim() != '') {
+            this.restaurants = this.restaurants.filter((restaurant) => {
+                return (restaurant.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+            })
+        }
     }
 }
