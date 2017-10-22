@@ -7,7 +7,6 @@ import {StatusBar} from '@ionic-native/status-bar';
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
-import {RestoDataProvider} from '../providers/resto-data/resto-data';
 
 @NgModule({
     declarations: [
@@ -28,7 +27,6 @@ import {RestoDataProvider} from '../providers/resto-data/resto-data';
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        RestoDataProvider
     ]
 })
 export class AppModule {
