@@ -63,6 +63,26 @@ export class HomePage {
             {
                 "name": "Taverna d'Umberto",
                 "type": "italienne"
+            },
+            {
+                "name": "Les Passagers de Beyrouth",
+                "type": "libanaise"
+            },
+            {
+                "name": "Yara",
+                "type": "libanaise"
+            },
+            {
+                "name": "Bistrot Beyrouth",
+                "type": "libanaise"
+            },
+            {
+                "name": "Kok Ping",
+                "type": "thailandaise"
+            },
+            {
+                "name": "Taverna d'Umberto",
+                "type": "italienne"
             }
         ];
     }
