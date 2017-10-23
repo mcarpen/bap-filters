@@ -1,14 +1,29 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Système de recherche
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            Système de recherche
+        </ion-title>
+    </ion-navbar>
+    <ion-searchbar (ionInput)="getRestaurantsSearch($event)" placeholder="Rechercher un restaurant"></ion-searchbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="getRestaurants($event)" placeholder="Rechercher un restaurant"></ion-searchbar>
-  <ion-item *ngFor="let restaurant of restaurants">
-    {{ restaurant.name }}
-  </ion-item>
+    <ion-item *ngFor="let restaurant of restaurants">
+        {{ restaurant.name }}
+    </ion-item>
 </ion-content>
+
+<ion-footer>
+    <ion-card>
+        <ion-card-content>
+            <ion-item text-center>
+                <ion-select [(ngModel)]="type" (ionChange)="getRestaurantsFilters()" multiple="true" okText="Filtrer" cancelText="Annuler" placeholder="Cuisine">
+                    <ion-option value="thailandaise">Thaïlandaise</ion-option>
+                    <ion-option value="japonaise">Japonaise</ion-option>
+                    <ion-option value="gastronomique">Gastronomique</ion-option>
+                    <ion-option value="italienne">Italienne</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-footer>

@@ -8,6 +8,7 @@ import {NavController} from 'ionic-angular';
 export class HomePage {
 
     restaurants: any;
+    type: Array<string>;
 
     constructor(public navCtrl: NavController) {
         this.initializeRestaurants();
@@ -66,18 +67,43 @@ export class HomePage {
         ];
     }
 
-    getRestaurants(ev: any) {
-        // Reset items back to all of the items
+    getRestaurantsSearch(ev: any) {
+        // reset items back to all of the restaurants
         this.initializeRestaurants();
 
         // set val to the value of the searchbar
         let val = ev.target.value;
 
-        // if the value is an empty string don't filter the items
+        // if the value is an empty string don't filter the restaurants
         if (val && val.trim() != '') {
             this.restaurants = this.restaurants.filter((restaurant) => {
                 return (restaurant.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
             })
+        }
+    }
+
+    getRestaurantsFilters(): void {
+
+        // reset items back to all of the restaurants
+        this.initializeRestaurants();
+
+        // retrieve checked filters
+        let filters = this.type;
+        let values = [];
+
+        // filter restaurants
+        for (var f of filters) {
+            // loop through filters and retrieve restaurant entries which match filter type
+            let newEntry = this.restaurants.filter((restaurant) => {
+                return (restaurant.type.indexOf(f) > -1);
+            })
+            // store entries
+            values = values.concat(newEntry);
+        }
+
+        // if the value is an empty array don't filter the restaurants
+        if (values.length != 0) {
+            this.restaurants = values;
         }
     }
 }
